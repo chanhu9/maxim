@@ -1,0 +1,37 @@
+adb push framework.jar /sdcard
+adb push monkey.jar /sdcard
+
+脱机运行方法（开始执行后，手机可以不连接电脑，错误日志记录在手机存储卡上）
+
+
+adb  shell "CLASSPATH=/sdcard/monkey.jar:/sdcard/framework.jar exec app_process /system/bin tv.panda.test.monkey.Monkey -p com.shallbuy.xiaoba.life --uiautomatormix --running-minutes 5 -v  --throttle 300 >/sdcard/monkeyout.txt 2>/sdcard/monkeyerr.txt &"
+
+
+非脱机运行方法（开始执行后，手机必须连接电脑，错误日志记录在电脑上）
+
+(mix)
+adb shell CLASSPATH=/sdcard/monkey.jar:/sdcard/framework.jar exec app_process /system/bin tv.panda.test.monkey.Monkey -p com.shallbuy.xiaoba.life --uiautomatormix --running-minutes 5 -v -v --throttle 300 > E:\work--doc2\test_log\monkey.log 2>E:\work--doc2\test_log\monkeyerr.log
+
+(dfs)
+adb shell CLASSPATH=/sdcard/monkey.jar:/sdcard/framework.jar exec app_process /system/bin tv.panda.test.monkey.Monkey -p com.shallbuy.xiaoba.life --uiautomatordfs --running-minutes 5 -v -v --throttle 300 > E:\work--doc2\test_log\monkey_3.log 2>E:\work--doc2\test_log\monkeyerr_3.log
+
+(白名单)
+adb shell CLASSPATH=/sdcard/monkey.jar:/sdcard/framework.jar exec app_process /system/bin tv.panda.test.monkey.Monkey -p com.shallbuy.xiaoba.life --uiautomatormix --running-minutes 5 --act-whitelist-file /sdcard/awl.strings -v -v --throttle 300 > E:\work--doc2\test_log\monkey.log 2>E:\work--doc2\test_log\monkeyerr.log
+
+（黑名单）
+adb shell CLASSPATH=/sdcard/monkey.jar:/sdcard/framework.jar exec app_process /system/bin tv.panda.test.monkey.Monkey -p com.shallbuy.xiaoba.life --uiautomatormix --running-minutes 5 --act-blacklist-file /sdcard/max.widget.black -v -v --throttle 300 > E:\work--doc2\test_log\monkey.log 2>E:\work--doc2\test_log\monkeyerr.log
+
+（白名单 + 截图 throttle > 200  &&  max.takeScreenShot= true）
+adb shell CLASSPATH=/sdcard/monkey.jar:/sdcard/framework.jar exec app_process /system/bin tv.panda.test.monkey.Monkey -p com.shallbuy.xiaoba.life --uiautomatormix --running-minutes 5 --act-whitelist-file /sdcard/awl.strings --output-directory /sdcard/max_pic/ -v -v --throttle 300 > E:\work--doc2\test_log\monkey.log 2>E:\work--doc2\test_log\monkeyerr.log
+
+(troy模式)
+adb shell CLASSPATH=/sdcard/monkey.jar:/sdcard/framework.jar exec app_process /system/bin tv.panda.test.monkey.Monkey -p com.shallbuy.xiaoba.life --uiautomatortroy --running-minutes 5 -v -v --throttle 300 > E:\work--doc2\test_log\monkey.log 2>E:\work--doc2\test_log\monkeyerr.log
+
+(崩溃回溯截图, throttle > 200 && max.takeScreenShot = true && --imagepolling)
+adb shell CLASSPATH=/sdcard/monkey.jar:/sdcard/framework.jar exec app_process /system/bin tv.panda.test.monkey.Monkey -p com.shallbuy.xiaoba.life --uiautomatormix --running-minutes 5 --act-whitelist-file /sdcard/awl.strings --imagepolling -v -v --throttle 300 > E:\work--doc2\test_log\monkey.log 2>E:\work--doc2\test_log\monkeyerr.log
+
+(关闭一些事件，日志3个v, 开启随机输入，配置max.xpath.actions 失败截图 --pct-reset 0 (关闭重启 事件), --pct-trackball 0 (轨迹球 事件), --pct-rotation 0 (旋转屏幕 事件) )
+adb shell CLASSPATH=/sdcard/monkey.jar:/sdcard/framework.jar exec app_process /system/bin tv.panda.test.monkey.Monkey -p com.shallbuy.xiaoba.life --uiautomatormix --running-minutes 10 --imagepolling --pct-reset 0 --pct-trackball 0 --pct-rotation 0 -v -v -v --throttle 300 > E:\work--doc2\test_log\monkey.log 2>E:\work--doc2\test_log\monkeyerr.log
+
+
+(还需要把退出按钮屏蔽掉)

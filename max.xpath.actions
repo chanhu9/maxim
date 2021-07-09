@@ -1,17 +1,54 @@
 [
 {
-    "prob": 0.3,
-        "actions": [{
-            "activity":"com.xxx.",
-            "xpath": "//*[@class='android.widget.EditText']",
-            "action": "CLICK",
-            "text": "666666",
-            "throttle": 3000
+    "prob":1,
+    "activity":"com.shallbuy.xiaoba.life.user.activity.LoginActivity",
+    "actions":[
+        {
+            "xpath":"//*[@resource-id='com.shallbuy.xiaoba.life:id/et_username']",
+            "index":1,
+            "action":"INPUTTEXT",
+            "text":"15566668888",
+            "throttle":8000
         },
         {
-            "xpath": "//*[@content-desc='登录' and @class='android.view.View' and @clickable='true']",
-            "action": "CLICK",
-            "throttle": 10000
-        }]
+            "xpath":"//*[@resource-id='com.shallbuy.xiaoba.life:id/et_password']",
+            "index":1,
+            "action":"INPUTTEXT",
+            "text":"aa123456",
+            "throttle":8000
+        },
+        {
+            "xpath":"//*[@resource-id='com.shallbuy.xiaoba.life:id/iv_agree_status_icon']",
+            "index":0,
+            "action":"CLICK",
+            "throttle":3000
+        },
+        {
+            "xpath":"//*[@resource-id='com.shallbuy.xiaoba.life:id/tv_login_go']",
+            "index":6,
+            "action":"CLICK",
+            "throttle":3000
+        }
+    ]
+},
+{   "prob":1,
+    "actions":[
+        {
+        "xpath":"//*[@resource-id='com.shallbuy.xiaoba.life:id/tv_cancel_button']",
+        "index":0,
+        "action":"CLICK",
+        "throttle":3000
+        }
+    ]
+},
+{   "prob":1,
+    "actions":[
+        {
+        "xpath":"//*[@resource-id='com.shallbuy.xiaoba.life:id/launch_test_env']",
+        "index":0,
+        "action":"CLICK",
+        "throttle":3000
+        }
+    ]
 }
 ]

@@ -1,7 +1,7 @@
 from MonkeyApi import MonkeyApi
 import time
 
-mk=MonkeyApi('192.168.0.104',8888) #初始化，Ip为monkey手机端ip，可用adb shell netcfg查看，端口号为指定的端口号，默认为8888
+mk=MonkeyApi('192.168.10.221', 8888) #初始化，Ip为monkey手机端ip，可用adb shell netcfg查看，端口号为指定的端口号，默认为8888
 
 try:
     mk.connect() #连接Monkey
